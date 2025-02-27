@@ -40,8 +40,9 @@
           background-attachment: fixed;
           overflow: hidden;  /* Ensures flowers don't spill outside this container */
           display: flex;
+          flex-direction: column; /* Stack the elements vertically */
           justify-content: center;
-          align-items: center; /* Centers the content (buttons) within the container */
+          align-items: center; /* Center the content vertically */
         }
 
         .falling-flower {
@@ -61,14 +62,6 @@
           }
         }
 
-        .button-container {
-          display: flex;
-          flex-direction: row; /* Align buttons side by side */
-          justify-content: center; /* Center the buttons horizontally */
-          align-items: center; /* Center the buttons vertically */
-          z-index: 10;
-        }
-
         .flower-btn {
           padding: 15px 30px;
           font-size: 18px;
@@ -84,13 +77,21 @@
         .flower-btn:hover {
           background-color: #FF1493;
         }
+
+        /* Add space between the text and the buttons */
+        .text-container {
+          margin-bottom: 20px; /* Adjust space between text and buttons */
+          font-family: 'Noto Serif KR', serif;
+          font-size: 20px;
+          text-align: center; /* Optional: Center the text */
+        }
       </style>
    </head>
 
    <body>
       <div class="background-container">
-         <div>
-            <p style="font-family: 'Noto Serif KR', serif; font-size: 20px;">
+         <div class="text-container">
+            <p>
                이라미, 김은열 결혼식에 초대합니다.
             </p>
          </div>
