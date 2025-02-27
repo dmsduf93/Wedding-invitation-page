@@ -28,6 +28,10 @@
           justify-content: center;
           align-items: center;
           background-color: #f0f8ff;
+          background-image: url('main_background.jpg'); /* Add your image URL here */
+          background-size: cover; /* Ensures the image covers the entire page */
+          background-position: center; /* Centers the background image */
+          background-attachment: fixed; /* Keeps the background fixed while scrolling */
         }
 
         .falling-flower {
@@ -72,28 +76,34 @@
          <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Kor/'">한국어</button>
          <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Eng/'">English</button>
       </div>
-
+      
       <script>
         // Create falling flowers
         const flowerImages = [
           "flower.png", // Flower icon image URL
         ];
-
+      
         function createFallingFlower() {
           const flower = document.createElement("img");
           flower.src = flowerImages[0];
           flower.classList.add("falling-flower");
+      
+          // Set random size for each flower (for variety)
+          const flowerSize = Math.random() * 3 + 1; // Random size between 10px and 40px
+          flower.style.width = `${flowerSize}px`; 
+          flower.style.height = `${flowerSize}px`;
+      
           flower.style.left = `${Math.random() * 100}vw`; // Random horizontal position
           flower.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random falling speed
-
+      
           document.body.appendChild(flower);
-
+      
           // Remove flower after it falls out of view
           flower.addEventListener("animationiteration", () => {
             flower.remove();
           });
         }
-
+      
         // Create flowers at regular intervals
         setInterval(createFallingFlower, 200);
       </script>
