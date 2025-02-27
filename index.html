@@ -39,6 +39,9 @@
           background-repeat: no-repeat;
           background-attachment: fixed;
           overflow: hidden;  /* Ensures flowers don't spill outside this container */
+          display: flex;
+          justify-content: center;
+          align-items: center; /* Centers the content (buttons) within the container */
         }
 
         .falling-flower {
@@ -58,10 +61,14 @@
           }
         }
 
+        .button-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          z-index: 10;
+        }
+
         .flower-btn {
-          position: absolute;
-          top: 20px;
-          left: 20px;
           padding: 15px 30px;
           font-size: 18px;
           margin: 10px;
@@ -71,7 +78,6 @@
           font-weight: bold;
           border-radius: 8px;
           cursor: pointer;
-          z-index: 10;
         }
 
         .flower-btn:hover {
@@ -82,8 +88,10 @@
 
    <body>
       <div class="background-container">
-         <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Kor/'">한국어</button>
-         <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Eng/'">English</button>
+         <div class="button-container">
+            <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Kor/'">한국어</button>
+            <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Eng/'">English</button>
+         </div>
       </div>
 
       <script>
