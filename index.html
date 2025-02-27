@@ -31,13 +31,14 @@
 
         .background-container {
           position: relative;
-          width: 80vw;  /* Adjusted to create a portrait-sized container */
+          width: 80vw;  /* Ensure the container is in portrait orientation */
           height: 100vh;
           background-image: url('main_background.png'); /* Add your image URL here */
-          background-size: contain; /* Ensure the image fits within the container */
+          background-size: contain; /* Ensures the image maintains its aspect ratio */
           background-position: center;
           background-repeat: no-repeat;
           background-attachment: fixed;
+          overflow: hidden;  /* Ensures flowers don't spill outside this container */
         }
 
         .falling-flower {
@@ -101,17 +102,17 @@
           flower.style.width = `${flowerSize}px`; 
           flower.style.height = `${flowerSize}px`;
       
-          // Random horizontal position inside the background container
+          // Get the width of the container and randomize the flower's horizontal position inside it
           const container = document.querySelector('.background-container');
           const containerWidth = container.offsetWidth;
-          flower.style.left = `${Math.random() * containerWidth}px`; 
+          flower.style.left = `${Math.random() * containerWidth}px`;  // Random horizontal position
 
-          // Random falling speed
-          flower.style.animationDuration = `${Math.random() * 5 + 5}s`; 
-      
+          // Set a random speed for each flower's falling animation
+          flower.style.animationDuration = `${Math.random() * 5 + 5}s`;  // Random speed between 5s and 10s
+
           container.appendChild(flower);
       
-          // Remove flower after it falls out of view
+          // Remove the flower when it has finished falling
           flower.addEventListener("animationiteration", () => {
             flower.remove();
           });
