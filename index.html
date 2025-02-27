@@ -18,7 +18,6 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
       <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
       
-      
       <style>
         body, html {
           height: 100%;
@@ -28,10 +27,17 @@
           justify-content: center;
           align-items: center;
           background-color: #f0f8ff;
-          background-image: url('main_background.jpg'); /* Add your image URL here */
-          background-size: cover; /* Ensures the image covers the entire page */
-          background-position: center; /* Centers the background image */
-          background-attachment: fixed; /* Keeps the background fixed while scrolling */
+        }
+
+        .background-container {
+          position: relative;
+          width: 80vw;  /* Adjusted to create a portrait-sized container */
+          height: 100vh;
+          background-image: url('main_background.png'); /* Add your image URL here */
+          background-size: contain; /* Ensure the image fits within the container */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
         }
 
         .falling-flower {
@@ -52,7 +58,9 @@
         }
 
         .flower-btn {
-          position: relative;
+          position: absolute;
+          top: 20px;
+          left: 20px;
           padding: 15px 30px;
           font-size: 18px;
           margin: 10px;
@@ -72,11 +80,11 @@
    </head>
 
    <body>
-      <div>
+      <div class="background-container">
          <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Kor/'">한국어</button>
          <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Eng/'">English</button>
       </div>
-      
+
       <script>
         // Create falling flowers
         const flowerImages = [
@@ -93,10 +101,15 @@
           flower.style.width = `${flowerSize}px`; 
           flower.style.height = `${flowerSize}px`;
       
-          flower.style.left = `${Math.random() * 100}vw`; // Random horizontal position
-          flower.style.animationDuration = `${Math.random() * 5 + 5}s`; // Random falling speed
+          // Random horizontal position inside the background container
+          const container = document.querySelector('.background-container');
+          const containerWidth = container.offsetWidth;
+          flower.style.left = `${Math.random() * containerWidth}px`; 
+
+          // Random falling speed
+          flower.style.animationDuration = `${Math.random() * 5 + 5}s`; 
       
-          document.body.appendChild(flower);
+          container.appendChild(flower);
       
           // Remove flower after it falls out of view
           flower.addEventListener("animationiteration", () => {
