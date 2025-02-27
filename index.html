@@ -63,8 +63,9 @@
 
         .button-container {
           display: flex;
-          flex-direction: column;
-          align-items: center;
+          flex-direction: row; /* Align buttons side by side */
+          justify-content: center; /* Center the buttons horizontally */
+          align-items: center; /* Center the buttons vertically */
           z-index: 10;
         }
 
@@ -88,6 +89,9 @@
 
    <body>
       <div class="background-container">
+         <p style="font-family: 궁서">
+            이라미, 김은열 결혼식에 초대합니다.
+         </p>
          <div class="button-container">
             <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Kor/'">한국어</button>
             <button class="flower-btn" onclick="window.location.href='https://dmsduf93.github.io/Wedding-invitation-Eng/'">English</button>
@@ -106,7 +110,7 @@
           flower.classList.add("falling-flower");
       
           // Set random size for each flower (for variety)
-          const flowerSize = Math.random() * 10 + 5; // Random size between 10px and 40px
+          const flowerSize = Math.random() * 3 + 1; // Random size between 10px and 40px
           flower.style.width = `${flowerSize}px`; 
           flower.style.height = `${flowerSize}px`;
       
